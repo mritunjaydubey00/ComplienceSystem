@@ -1,0 +1,10 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+
+backend/.venv/
+backend/__pycache__/
+
+complience-system/node_modules/
+complience-system/dist/

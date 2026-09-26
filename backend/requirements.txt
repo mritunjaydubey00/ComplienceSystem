@@ -1,0 +1,12 @@
+fastapi==0.115.12
+numpy==1.26.4
+opencv-contrib-python==4.10.0.84
+paddleocr==3.0.0
+paddlepaddle==3.0.0
+psycopg[binary]==3.2.6
+pydantic==2.10.6
+python-multipart==0.0.20
+redis==5.2.1
+rq==2.1.0
+SQLAlchemy==2.0.38
+uvicorn[standard]==0.34.0
