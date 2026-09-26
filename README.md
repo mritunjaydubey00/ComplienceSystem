@@ -1,6 +1,21 @@
-# PharmaLedger Compliance Inspection
+# PharmaLedger Compliance Inspection (ComplienceSystem)
 
 Docker Compose scaffold for the existing React inspection UI and a FastAPI service with PostgreSQL, Redis, and a separate asynchronous OCR worker.
+
+This repository (ComplienceSystem) implements officer inspection tooling, a dashboard UI, REST APIs, and async image/OCR jobs for PharmaLedger under SIH26.
+
+Tech stack
+
+- Frontend: React (Vite) served by Nginx
+- Backend: FastAPI (Python) for API endpoints and job submission
+- Async jobs: RQ + Redis with a separate OCR worker
+- Database: PostgreSQL (inspections, products, versioned rules)
+- OCR: PaddleOCR (open-source, multilingual)
+- Computer vision: OpenCV (image correction, CLAHE, perspective fix)
+- Rule engine: custom Python engine using JSON/DB mapped to legal metrology clauses
+- Auth & security: JWT + RBAC for officer/supervisor roles
+- Reporting: ReportLab and WeasyPrint for embedded evidence PDFs
+- Deployment: Docker Compose for local/dev; can be deployed to cloud VM/VPS or container platform (provide secrets via platform secret manager)
 
 ## Project Structure
 
@@ -46,4 +61,5 @@ The `worker` service runs PaddleOCR outside the API request process. `backend/ap
 
 Backend unit tests use the standard library `unittest` runner: `python -m unittest discover -s backend/tests` from the repository root.
 
-For deployment, provide secrets through the platform's secret manager, terminate TLS at a trusted ingress, and add authentication/authorization and retention policies before accepting real compliance evidence.
+For deployment, provide secrets through the platform's secret manager, terminate TLS at a trusted ingress, and add authentication/authorization and retention policies before accepting real compliance evidence. The Docker Compose setup targets local development; production deployments should target a managed host or cloud VM/VPS and use secure secret management and TLS termination.
+
